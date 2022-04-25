@@ -1,0 +1,86 @@
+---------------------------------------------
+
+FRM_connection
+
+-------------------------------------------
+
+private DbStockContext db;
+private form frammenu;
+BL.CLS_Connexion C = new BL.CLS_Connexion();
+public FRM_connection(Form Menu)
+{
+	InitializeComponent();
+	this.frammenu = Menu;
+	// initialise la base de donne
+	db =new DbStockContext();
+	
+
+}
+string testobligatoire()
+{
+	if(txtNom.Text =="" || txtNom.Text== "Nom d'utlisateur")
+	{
+		return "Entrer votre Nom";
+	}
+	if(txtmotdepasse.Text =="" || txtmotdepasse.Text== "Nom d'utlisateur")
+	{
+		return "Entrer votre Mot de passe";
+	}
+	return null;
+}
+private void btnquitter_Click (object sender, EventArgs e)
+{	
+		this.close();
+}
+private void txtNom_Enter (object sender, EventArgs e)
+{	
+		if(txtNom.Text=="Nom d'utlisateur")
+		{
+		txtNom.Text ="";
+		txtNom.ForeColor = Color.whiteSmoke;
+		}
+}
+private void txtmotdepasse_Enter (object sender, EventArgs e)
+{	
+		if(txtmotdepasse.Text=="Mot de passse")
+		{
+		txtmotdepasse.Text ="";
+		txtmotdepasse.UseSystemPasswordofChar=false;
+		txtmotdepasse.PasswordChar = '*';
+		txtmotdepasse.ForeColor = Color.whiteSmoke;
+		}
+}
+private void txtNom_Leave (object sender, EventArgs e)
+{	
+		if(txtNom.Text=="")
+		{
+		txtNom.Text = "Nom d'utlisateur";
+		txtNom.ForeColor = Color.Silver;
+		}
+}
+private void txtmotdepasse_Leave (object sender, EventArgs e)
+{	
+		if(txtmotdepasse.Text=="")
+		{
+		txtmotdepasse.Text ="Mot de passse";
+		txtmotdepasse.UseSystemPasswordofChar= true; // deactiver pasword char
+		txtmotdepasse.ForeColor = Color.Silver;
+		}
+}
+private void button1_Click (object sender, EventArgs e)
+{	
+		if(testobligatoire()==null)
+		{
+			if(C.ConnexionValide(db, txtNom.Text, txtmotdepasse.Text)== true)// user existe
+			{
+				MessageBox.Show("Connexion a réussi", "Connexion", MessageBoxButtons.ok,MessageBoxIcon.Asterisk  )
+				(frammenu as FRM_Menu).activerform();
+			}
+			else // fase n'existe pas
+			{
+				MessageBox.Show("Connexion a échoué", "Connexion", MessageBoxButtons.ok,MessageBoxIcon.Error  )
+			}
+		}else{
+			MessageBox.Show(testobligatoire(), "obligatoire", MessageBoxButtons.ok, MessageBoxIcon.Error )
+		}
+}

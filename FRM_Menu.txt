@@ -1,0 +1,105 @@
+GestionDeStock
+DbStock
+dbStockContext
+FRM_Menu
+
+Client / btnclient
+Produit / btnproduit
+Categorie / btncategorie
+Commande / btncommande
+Utilisateur /btnutilisateur
+
+----------------------------------------------------------------
+FRM_Menu
+
+
+public FRM_Menu()
+{
+	InitializeComponent()
+	panel1.Size=new Size(229, 612);
+	pnlparamettrer.visible = false;
+}
+// deactiver formulaire 
+void deactiverform()
+{
+	btnclient.Enabled =  false ;
+	btnproduit.Enabled = false ;
+	btncategorie.Enabled = false ;
+	btncommande.Enabled = false ;
+	btnutilisateur.Enabled = false ;
+	btncopie.Enabled = false ;
+	btnrestaurer.Enabled = false ;
+	btndeconnecter.Enabled = false ;
+	btnproduit.Enabled = false ;
+	pnlBut.Enabled = false ;
+	btndeconnecter.Enabled = true ;
+	
+}
+//active formulaire
+public void activerform(){
+btnclient.Enabled =  true ;
+	btnproduit.Enabled = true ;
+	btncategorie.Enabled = true ;
+	btncommande.Enabled = true ;
+	btnutilisateur.Enabled = true ;
+	btncopie.Enabled = true ;
+	btnrestaurer.Enabled = true ;
+	btndeconnecter.Enabled = true ;
+	btnproduit.Enabled = true ;
+	pnlBut.Enabled = true ;
+		btndeconnecter.Enabled = false ;
+	}
+
+private void button1_Click (object sender, EventArgs e)
+{	
+		Application.Exit();
+}
+private void button2_Click (object sender, EventArgs e)
+{	
+		this.windowState = FormwindowState.Minimized;
+}
+private void button3_Click (object sender, EventArgs e)
+{	
+		if(panel1.width == 229)
+		{
+		panel1.Size = new Size(82, 612);
+		}
+		else{
+		panel1.Size = new Size(229, 612);
+		}
+}
+private void FRM_Menu_Load (object sender, EventArgs e)
+{	
+		deactiverform();
+}
+private void btnproduit_Click (object sender, EventArgs e)
+{	
+		bnlBut.Top =btnproduit.Top;
+}
+private void btnclient_Click (object sender, EventArgs e)
+{	
+		bnlBut.Top =btnclient.Top;
+}
+private void btncategorie_Click (object sender, EventArgs e)
+{	
+		bnlBut.Top =btncategorie.Top;
+}
+private void btncommande_Click (object sender, EventArgs e)
+{	
+		bnlBut.Top =btncommande.Top;
+}
+private void btnutilisateur_Click (object sender, EventArgs e)
+{	
+		bnlBut.Top =btnutilisateur.Top;
+}
+private void btnparamettre_Click (object sender, EventArgs e)
+{	
+		pnlparamettrer.Size = new Size(313, 175);
+		pnlparamettrer.Visible = !pnlparamettrer.visible;
+}
+
+private void button4_Click (object sender, EventArgs e)
+{	
+		FRM_Connection frmc = new FRM_Connection(); // this = frm-menu
+		frmc.showDialog(); 
+}
