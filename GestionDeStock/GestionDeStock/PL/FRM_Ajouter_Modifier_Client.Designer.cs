@@ -164,7 +164,9 @@ namespace GestionDeStock.PL
             // 
             // pictureBox2
             // 
+            this.pictureBox2.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.ErrorImage")));
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
             this.pictureBox2.Location = new System.Drawing.Point(65, 177);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(32, 31);
@@ -433,29 +435,29 @@ namespace GestionDeStock.PL
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.TextBox txtnom;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox txtadresse;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.TextBox txtprenom;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.TextBox txttelephone;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.TextBox txtemail;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.TextBox txtville;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.TextBox txtpays;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Button btnenregistrer;
         private System.Windows.Forms.Button btnexit;
         public System.Windows.Forms.Label lblTitle;
         public System.Windows.Forms.Button btnactualiser;
+        public System.Windows.Forms.TextBox txtnom;
+        public System.Windows.Forms.TextBox txtadresse;
+        public System.Windows.Forms.TextBox txtprenom;
+        public System.Windows.Forms.TextBox txttelephone;
+        public System.Windows.Forms.TextBox txtemail;
+        public System.Windows.Forms.TextBox txtville;
+        public System.Windows.Forms.TextBox txtpays;
     }
 }

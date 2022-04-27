@@ -34,5 +34,21 @@ namespace GestionDeStock.BL
                 return false;
             }
         }
+        public void Modifier_client(int id, string Nom, string prenom, string Adresse, string Telephone, string Email, string pays, string Ville)
+        {
+            C = new Client();
+            C = db.Clients.SingleOrDefault(s => s.ID_Client == id); // verifier si id d client et existe
+            if(C!=null) //existe
+            {
+                C.Nom_Client = Nom;
+                C.Prenom_Client = prenom;
+                C.Adresse_Client = Adresse;
+                C.Telephonne_Client = Telephone;
+                C.Email_Client = Email;
+                C.Pays_Client = pays;
+                C.Ville_Client = Ville;
+                db.SaveChanges();
+            }
+        }
     }
 }

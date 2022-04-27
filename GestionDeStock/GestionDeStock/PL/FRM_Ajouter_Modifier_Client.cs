@@ -107,6 +107,7 @@ namespace GestionDeStock.PL
                 MessageBox.Show(testobligatoire(), "obligatoire", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
+            if(lblTitle.Text == "Ajouter Client")
             {
                 BL.CLS_Client clclient = new BL.CLS_Client();
                 if(clclient.Ajouter_Client(txtnom.Text, txtprenom.Text,txtadresse.Text , txttelephone.Text, txtemail.Text, txtpays.Text, txtville.Text)==true )
@@ -118,6 +119,13 @@ namespace GestionDeStock.PL
                 {
                     MessageBox.Show("Nom et prenom de client deja existe ", "Ajouter", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
+            }
+            else // si lbtitre = modifier
+            {
+                BL.CLS_Client clclient = new BL.CLS_Client();
+                USER_Liste_Client user = new USER_Liste_Client();
+                clclient.Modifier_client(user.IDselect, txtnom.Text, txtprenom.Text, txtadresse.Text, txttelephone.Text, txtemail.Text, txtpays.Text, txtville.Text);
+                (usclient as USER_Liste_Client).Actualisedatagrid();
             }
         }
 

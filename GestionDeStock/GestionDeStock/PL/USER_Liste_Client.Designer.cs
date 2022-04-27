@@ -167,6 +167,7 @@ namespace GestionDeStock.PL
             // 
             // dvgclient
             // 
+            this.dvgclient.AllowUserToAddRows = false;
             this.dvgclient.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -253,13 +254,13 @@ namespace GestionDeStock.PL
             // 
             // Column6
             // 
-            this.Column6.HeaderText = "Ville";
+            this.Column6.HeaderText = "Pays";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             // 
             // Column7
             // 
-            this.Column7.HeaderText = "Pays";
+            this.Column7.HeaderText = "Ville";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
             // 

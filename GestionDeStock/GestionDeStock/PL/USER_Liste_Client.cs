@@ -34,12 +34,34 @@ namespace GestionDeStock.PL
         // ajouter dans la datagrid view 
         public void Actualisedatagrid()
         {
+            db = new dbStockContext();
             dvgclient.Rows.Clear(); // vider datagrid view
             foreach(var S in db.Clients)
             {
                 // ajouter les lignes dans datagrid 
-                dvgclient.Rows.Add(false , S.ID_Client, S.Prenom_Client, S.Telephonne_Client, S.Adresse_Client, S.Email_Client, S.Pays_Client,S.Ville_Client );
+                dvgclient.Rows.Add(false , S.ID_Client, S.Nom_Client, S.Prenom_Client,  S.Adresse_Client, S.Telephonne_Client, S.Email_Client, S.Pays_Client,S.Ville_Client );
             }
+        }
+        // verifier combien de ligne est selctiooner
+        public string Selectverif()
+        {
+            int Nombreligneselect = 0;
+            for(int i=0; i< dvgclient.Rows.Count; i++)
+            {
+                if((bool)dvgclient.Rows[i].Cells[0].Value==true )// si ligne es selectionner
+                {
+                    Nombreligneselect++;
+                }
+            }
+            if(Nombreligneselect == 0)
+            {
+                return "selectionner le client que vous-voulez modifier";
+            }
+            if (Nombreligneselect > 1)
+            {
+                return "selectionner seulement 1 seul client pour modifier";
+            }
+            return null;
         }
         private void btnajouter_Click(object sender, EventArgs e)
         {
@@ -74,24 +96,22 @@ namespace GestionDeStock.PL
         private void USER_Liste_Client_Load(object sender, EventArgs e)
         {
             Actualisedatagrid();
-            //dvgclient.Rows.Add();
-            //dvgclient.Rows[0].Cells[1].Value = "tom";
-            //dvgclient.Rows[0].Cells[2].Value = "xxx";
-            //dvgclient.Rows[0].Cells[3].Value = "xx";
-
-            //dvgclient.Rows[0].Cells[4].Value = "2222222";
-            //dvgclient.Rows[0].Cells[5].Value = "info@mail.com";
-            //dvgclient.Rows[0].Cells[6].Value = "tunisa ";
-            //dvgclient.Rows[0].Cells[6].Value = "sfax";
         }
-
+        public int IDselect;
         private void btnmodifier_Click(object sender, EventArgs e)
         {
             PL.FRM_Ajouter_Modifier_Client frmclient = new FRM_Ajouter_Modifier_Client(this);
-            frmclient.lblTitle.Text = "Modifier Client";
-            frmclient.btnactualiser.Visible = false;
-
-            frmclient.ShowDialog();
+            if (Selectverif()== null)
+            {
+                frmclient.lblTitle.Text = "Modifier Client";
+                frmclient.btnactualiser.Visible = false;
+                frmclient.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show(Selectverif(), "modification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
     }
 }
